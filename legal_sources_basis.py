@@ -1,5 +1,5 @@
 """
-@module dmvdata.legal_sources
+@module dmvdata.legal_sources_basis
 
 The NON-GOVERNMENT legal source types (Dustin 2026-07-16: "add
 NonProfitSource, CompanySource, PoliticalGroupSource, and
@@ -15,7 +15,7 @@ legal form:
   IndividualSource      -> a Polari Contributor row (platform users)
 
 One machinery, five tables: the glossary/term-origin/retrieval/
-credibility functions in dmvdata.gov_sources span every source kind
+credibility functions in dmvdata.gov_sources_basis span every source kind
 via its SOURCE_TABLES registry. Non-government sources are always
 FRAMED as such in reports — they are never presented as official
 statistic origins.
@@ -25,7 +25,7 @@ never invent registry identifiers: an unknown EIN/FEC id stays ''
 with the lookup URL pointing at the official search tool.
 
 @consumers
-  - dmvdata.gov_sources (SOURCE_TABLES machinery)
+  - dmvdata.gov_sources_basis (SOURCE_TABLES machinery)
   - polariServer (registration + seed, wired by the main session)
 """
 

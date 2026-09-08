@@ -2,7 +2,7 @@
 Selftest — the GovSource registry (Dustin 2026-07-16).
 
 Run from polari-framework/:
-    python3 -m dmvdata.selftest_gov_sources
+    python3 -m dmvdata.gov_sources_selftest
 
 Covers: the acronym glossary (unique, expanded, official websites);
 per-source API-key requirements naming ONLY env knobs (never literal
@@ -23,8 +23,8 @@ from types import SimpleNamespace
 sys.path.insert(0, os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 
-from dmvdata import census_pull as cp
-from dmvdata import gov_sources as gs
+from dmvdata.custom import census_pull as cp
+from dmvdata import gov_sources_basis as gs
 from dmvdata.source_seed import DMV_JURISDICTIONS, SEED_API_ENDPOINTS
 from scoring.dmv_col_seed import (SEED_DMV_GEO_CONTEXTS,
                                   SEED_DMV_TERMS,

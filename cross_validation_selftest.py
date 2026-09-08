@@ -2,7 +2,7 @@
 Selftest — cross-validation + provider reliability.
 
 Run from polari-framework/:
-    python3 -m dmvdata.selftest_cross_validation
+    python3 -m dmvdata.cross_validation_selftest
 
 Two groups pull the same official data on their own instances and
 compare: identical duplicates CONFIRM (and each additional distinct
@@ -21,8 +21,8 @@ from types import SimpleNamespace
 sys.path.insert(0, os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 
-from dmvdata import cross_validation as cv
-from dmvdata.gov_sources import SEED_GOV_SOURCES, record_retrieval
+from dmvdata import cross_validation_basis as cv
+from dmvdata.gov_sources_basis import SEED_GOV_SOURCES, record_retrieval
 
 PASS, FAIL = '\033[0;32mPASS\033[0m', '\033[0;31mFAIL\033[0m'
 _results = []
@@ -238,7 +238,7 @@ def _provider():
 
     from scoring.scoring_basis import (ScoreContext, ScoreSubject,
                                        ScoreTerm)
-    from scoring.score_concept import ScoreConcept
+    from scoring.score_concept_basis import ScoreConcept
     for seed in cv.SEED_PROVIDER_TERMS:
         m.objectTables['ScoreTerm'][seed['name']] = ScoreTerm(
             **seed, manager=None)
@@ -251,7 +251,7 @@ def _provider():
     m.objectTables['ScoreContext']['year-2026'] = ScoreContext(
         name='year-2026', display_name='2026',
         context_type='timeframe', manager=None)
-    from scoring.scoring_engine import score_concept
+    from scoring.custom.scoring_engine import score_concept
     scored = score_concept(m, 'data-provider-reliability')
     subject_scores = scored.get('subjects') or scored.get(
         'perSubject') or []

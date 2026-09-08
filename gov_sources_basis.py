@@ -1,5 +1,5 @@
 """
-@module dmvdata.gov_sources
+@module dmvdata.gov_sources_basis
 
 The GOV SOURCES registry (Dustin 2026-07-16): "an easy way to know
 what these acronyms are and to find their official websites" —
@@ -25,7 +25,7 @@ match case-insensitively anywhere — a provenance URL is the
 strongest origin signal.
 
 @consumers
-  - dmvdata.census_pull (records retrievals on ingest)
+  - dmvdata.custom.census_pull (records retrievals on ingest)
   - polariServer (registration + seed, wired by the main session)
   - the PSC sources/glossary page (col-6, later)
 """
@@ -43,7 +43,7 @@ JURISDICTIONS = ('federal', 'dc', 'virginia', 'maryland', 'local')
 #: Every legal source type, one machinery (Dustin 2026-07-16:
 #: "varying legal source types"). Class-name strings, not imports —
 #: the tables resolve at the manager, so no dependency on
-#: dmvdata.legal_sources is needed here. Government scans first.
+#: dmvdata.legal_sources_basis is needed here. Government scans first.
 SOURCE_TABLES = {
     'GovSource': 'government',
     'NonProfitSource': 'nonprofit',

@@ -3,7 +3,7 @@ Selftest — col-2: DMV official-source registration + the Census
 end-to-end slice.
 
 Run from polari-framework/:
-    python3 -m dmvdata.selftest_dmv_sources
+    python3 -m dmvdata.dmv_sources_selftest
 
 Covers: every seed row constructs against the REAL
 APIDomain/APIEndpoint classes; no seed carries anything resembling a
@@ -24,7 +24,7 @@ from types import SimpleNamespace
 sys.path.insert(0, os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 
-from dmvdata import census_pull as cp
+from dmvdata.custom import census_pull as cp
 from dmvdata.source_seed import (DMV_JURISDICTIONS, SEED_API_DOMAINS,
                                  SEED_API_ENDPOINTS)
 
@@ -166,7 +166,7 @@ def _ingest_bridge():
     except ValueError:
         refused = True
     check('a failed pull cannot become an ingest payload', refused)
-    from scoring.data_ingestion import ingest_records
+    from scoring.custom.data_ingestion import ingest_records
     refusal = ingest_records(
         SimpleNamespace(objectTables={'ScoreTerm': {}}), payload)
     check('the REAL bridge validates the payload shape (refuses '

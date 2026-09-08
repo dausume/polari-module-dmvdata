@@ -1,10 +1,10 @@
 """
-@module dmvdata.census_pull
+@module dmvdata.custom.census_pull
 
 col-2's end-to-end slice: pull one ACS table for the 11 DMV
 jurisdictions from the official Census API and hand it to the
 scoring engine through the EXISTING ingest bridge
-(scoring.data_ingestion.ingest_records) — geography as subject,
+(scoring.custom.data_ingestion.ingest_records) — geography as subject,
 [geography-context, acs-vintage] as contexts, the full API URL as
 provenance. No key needed at this volume (plan Appendix B1).
 
@@ -182,11 +182,11 @@ def ingest_acs_to_scoring(manager, pull_result, term_name,
     `retrieved_by` names the Contributor (optionally acting for a
     ScoreGroup), a SourceRetrieval row records the duplication —
     date-time + group/individual origin (GovSource registry)."""
-    from scoring.data_ingestion import ingest_records
+    from scoring.custom.data_ingestion import ingest_records
     payload = build_ingest_payload(pull_result, term_name)
     result = ingest_records(manager, payload)
     if result.get('ok') and retrieved_by:
-        from dmvdata.gov_sources import record_retrieval
+        from dmvdata.gov_sources_basis import record_retrieval
         table = pull_result.get('table', '?')
         retrieval = record_retrieval(
             manager, 'census-acs',

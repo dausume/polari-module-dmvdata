@@ -3,7 +3,7 @@ Selftest — the legal source types (Dustin 2026-07-16: NonProfit /
 Company / PoliticalGroup / Individual siblings of GovSource).
 
 Run from polari-framework/:
-    python3 -m dmvdata.selftest_legal_sources
+    python3 -m dmvdata.legal_sources_selftest
 
 Covers: the four classes construct standalone; ONE machinery spans
 all five source tables (glossary labeled by kind, find_source,
@@ -25,9 +25,9 @@ from types import SimpleNamespace
 sys.path.insert(0, os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 
-from dmvdata import cross_validation as cv
-from dmvdata import gov_sources as gs
-from dmvdata import legal_sources as ls
+from dmvdata import cross_validation_basis as cv
+from dmvdata import gov_sources_basis as gs
+from dmvdata import legal_sources_basis as ls
 from dmvdata.source_seed import SEED_API_ENDPOINTS
 
 PASS, FAIL = '\033[0;32mPASS\033[0m', '\033[0;31mFAIL\033[0m'

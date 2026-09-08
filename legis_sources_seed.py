@@ -1,5 +1,5 @@
 """
-@module dmvdata.legis_sources
+@module dmvdata.legis_sources_seed
 
 Legislative-body API registrations (Dustin 2026-07-16: legislation
 "should be retrieved from public apis if possible"). Kept OUT of
@@ -27,7 +27,7 @@ keys — repos are PUBLIC.
 
 @consumers
   - polariServer (registration + seed, wired by the main session)
-  - scoring.legislation (the rows these APIs would populate)
+  - scoring.legislation_basis (the rows these APIs would populate)
 """
 
 SEED_LEGIS_DOMAINS = [

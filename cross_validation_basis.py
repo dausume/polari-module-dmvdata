@@ -1,5 +1,5 @@
 """
-@module dmvdata.cross_validation
+@module dmvdata.cross_validation_basis
 
 Cross-validation of duplicated source data (Dustin 2026-07-16):
 more users assert duplicate data as REAL by pulling the same source
@@ -22,7 +22,7 @@ Honesty stances baked in:
     constants — knobs, not hidden policy.
 
 @consumers
-  - dmvdata.selftest_cross_validation
+  - dmvdata.cross_validation_selftest
   - scoring engine (via SEED_PROVIDER_TERMS / SEED_PROVIDER_CONCEPT
     + push_provider_scores)
 """
@@ -33,7 +33,7 @@ from datetime import datetime, timezone
 
 from objectTreeDecorators import treeObject, treeObjectInit
 from polariApiProfiler.schema_drift import verify_continuity
-from scoring.survival_costs import SMALL_SAMPLE
+from scoring.survival_costs_basis import SMALL_SAMPLE
 
 #: Verdict knobs: a mismatch (or missing-key) SHARE above this is a
 #: contradiction; zero mismatches AND zero missing originals is a
@@ -369,7 +369,7 @@ SEED_PROVIDER_TERMS = [
      'abstract_tags_json': json.dumps(
          ['data-trust', 'reliability', 'provenance']),
      'source': _PROVIDER_PROVENANCE,
-     'provenance_id': 'dmvdata.cross_validation provider terms',
+     'provenance_id': 'dmvdata.cross_validation_basis provider terms',
      'notes': ''},
     {'name': 'data-contradiction-rate',
      'display_name': 'Data Contradiction Rate',
@@ -380,7 +380,7 @@ SEED_PROVIDER_TERMS = [
      'abstract_tags_json': json.dumps(
          ['data-trust', 'reliability', 'provenance']),
      'source': _PROVIDER_PROVENANCE,
-     'provenance_id': 'dmvdata.cross_validation provider terms',
+     'provenance_id': 'dmvdata.cross_validation_basis provider terms',
      'notes': ''},
     {'name': 'data-retrieval-volume',
      'display_name': 'Data Retrieval Volume',
@@ -392,7 +392,7 @@ SEED_PROVIDER_TERMS = [
      'abstract_tags_json': json.dumps(
          ['data-trust', 'reliability', 'volume']),
      'source': _PROVIDER_PROVENANCE,
-     'provenance_id': 'dmvdata.cross_validation provider terms',
+     'provenance_id': 'dmvdata.cross_validation_basis provider terms',
      'notes': ''},
 ]
 
@@ -416,7 +416,7 @@ SEED_PROVIDER_CONCEPT = [
      'aggregation': 'weighted-mean', 'levelize': True,
      'abstract_tags_json': json.dumps(
          ['data-trust', 'reliability', 'provenance']),
-     'provenance_id': 'dmvdata.cross_validation provider concept',
+     'provenance_id': 'dmvdata.cross_validation_basis provider concept',
      'notes': ''},
 ]
 
